@@ -4,8 +4,8 @@ class ShoutSearchQuery
   end
 
   def to_relation
-    matching_shouts_for_text_shouts.
-      or(matching_shouts_for_photo_shouts)
+    # Shout.where(id: Shout.search { fulltext term }.hits.map(&:primary_key))
+    Shout.search { fulltext term }.results
   end
 
   private
